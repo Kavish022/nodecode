@@ -14,6 +14,11 @@ import '@xyflow/react/dist/style.css'
 import { CustomNode } from './custom-node'
 import { BrickType } from '@/lib/brick-types'
 import { useStore } from "@/lib/store"
+import { CustomEdge } from './custom-edge'
+
+const edgeTypes = {
+  custom: CustomEdge,
+}
 
 const nodeTypes = {
   custom: CustomNode,
@@ -30,35 +35,42 @@ function FlowCanvasInner() {
     event.dataTransfer.dropEffect = 'move'
   }, [])
 
-  const onDrop = useCallback(
-    (event: React.DragEvent) => {
-      event.preventDefault()
-      const brickData = event.dataTransfer.getData('application/reactflow')
-      if (!brickData || !reactFlowInstance) return
+const onDrop = useCallback(
+  (event: React.DragEvent) => {
+    event.preventDefault()
+    const brickData = event.dataTransfer.getData('application/reactflow')
+    if (!brickData || !reactFlowInstance) return
 
-      const brick: BrickType = JSON.parse(brickData)
-      const position = reactFlowInstance.screenToFlowPosition({
-        x: event.clientX,
-        y: event.clientY,
-      })
+    const brick: BrickType = JSON.parse(brickData)
+    const position = reactFlowInstance.screenToFlowPosition({
+      x: event.clientX,
+      y: event.clientY,
+    })
 
-      const id = `${brick.id}_${Math.random().toString(36).substring(2, 9)}`
-      
-      const newNode: Node = {
-        id,
-        type: 'custom',
-        position,
-        data: { 
-          label: brick.label,
-          brickId: brick.id,
-          files: brick.files.map((f: any) => ({ ...f })) 
-        },
-      }
+    const id = `${brick.id}_${Math.random().toString(36).substring(2, 9)}`
+    
+    // THE FIX: We define the initial size here. 
+    // This removes the "ghost space" and gives NodeResizer a value to change.
+    const newNode: Node = {
+      id,
+      type: 'custom',
+      position,
+      // style: This is the secret sauce for NodeResizer compatibility
+      style: { width: 450, height: 350 }, 
+      data: { 
+        label: brick.label,
+        brickId: brick.id,
+        // We spread the files to ensure we have a fresh copy of the content
+        files: brick.files.map((f: any) => ({ ...f })),
+        // Passing the exportName so our "Global Linker" knows what variable to use
+        exportName: brick.exportName 
+      },
+    }
 
-      addNode(newNode)
-    },
-    [reactFlowInstance, addNode]
-  )
+    addNode(newNode)
+  },
+  [reactFlowInstance, addNode]
+)
 
   return (
     <div ref={reactFlowWrapper} className="flex-1 h-full w-full relative">
@@ -72,6 +84,7 @@ function FlowCanvasInner() {
         onDrop={onDrop}
         onDragOver={onDragOver}
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
         fitView
       >
         <Background gap={20} size={1} />

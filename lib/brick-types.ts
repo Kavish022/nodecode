@@ -15,23 +15,35 @@ export interface BrickFile {
 }
 
 export interface BrickType {
-  id: string
-  label: string
-  icon: LucideIcon
-  color: string
-  files: BrickFile[] // Added this
+  id: string;
+  label: string;
+  icon: LucideIcon;
+  color: string;
+  category: 'database' | 'server' | 'auth' | 'frontend'; // Added this
+  files: BrickFile[];
+  exportName?: string; // e.g., "dbClient"
 }
 
 export const brickTypes: BrickType[] = [
   {
     id: 'mongodb',
     label: 'MongoDB',
+    category: 'database',
     icon: Database,
     color: 'text-green-500',
+    exportName: 'connectDB',
     files: [
-      { name: 'schema.ts', content: '// MongoDB Schema\nexport const UserSchema = {};' },
-      { name: 'connection.ts', content: 'const URL = "mongodb://localhost:27017";' }
+      { name: 'db.ts', content: 'export const connectDB = () => console.log("DB Connected");' }
     ]
   },
-  // Repeat 'files' for other bricks like Express, Auth, etc.
-]
+  {
+    id: 'express',
+    label: 'Express Server',
+    category: 'server',
+    icon: Server,
+    color: 'text-blue-500',
+    files: [
+      { name: 'server.ts', content: '// Express Server init\n' }
+    ]
+  }
+];
