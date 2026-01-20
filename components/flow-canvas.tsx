@@ -1,43 +1,29 @@
 'use client'
 
-import React from "react"
-
-import { useCallback, useState, useRef } from 'react'
+import React, { useCallback, useState, useRef } from 'react'
 import {
   ReactFlow,
   Background,
   Controls,
   MiniMap,
-  addEdge,
-  useNodesState,
-  useEdgesState,
-  Connection,
-  Node,
-  Edge,
   ReactFlowProvider,
   ReactFlowInstance,
+  Node,
 } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { CustomNode } from './custom-node'
 import { BrickType } from '@/lib/brick-types'
+import { useStore } from "@/lib/store"
 
 const nodeTypes = {
   custom: CustomNode,
 }
 
-let nodeId = 0
-const getId = () => `node_${nodeId++}`
-
+// 1. This handles the logic
 function FlowCanvasInner() {
   const reactFlowWrapper = useRef<HTMLDivElement>(null)
-  const [nodes, setNodes, onNodesChange] = useNodesState<Node>([])
-  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge>([])
+  const { nodes, edges, onNodesChange, onEdgesChange, addNode, onConnect } = useStore() as any
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null)
-
-  const onConnect = useCallback(
-    (params: Connection) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
-  )
 
   const onDragOver = useCallback((event: React.DragEvent) => {
     event.preventDefault()
@@ -47,7 +33,6 @@ function FlowCanvasInner() {
   const onDrop = useCallback(
     (event: React.DragEvent) => {
       event.preventDefault()
-
       const brickData = event.dataTransfer.getData('application/reactflow')
       if (!brickData || !reactFlowInstance) return
 
@@ -57,23 +42,26 @@ function FlowCanvasInner() {
         y: event.clientY,
       })
 
+      const id = `${brick.id}_${Math.random().toString(36).substring(2, 9)}`
+      
       const newNode: Node = {
-        id: getId(),
+        id,
         type: 'custom',
         position,
         data: { 
           label: brick.label,
           brickId: brick.id,
+          files: brick.files.map((f: any) => ({ ...f })) 
         },
       }
 
-      setNodes((nds) => nds.concat(newNode))
+      addNode(newNode)
     },
-    [reactFlowInstance, setNodes]
+    [reactFlowInstance, addNode]
   )
 
   return (
-    <div ref={reactFlowWrapper} className="flex-1 relative">
+    <div ref={reactFlowWrapper} className="flex-1 h-full w-full relative">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -85,20 +73,16 @@ function FlowCanvasInner() {
         onDragOver={onDragOver}
         nodeTypes={nodeTypes}
         fitView
-        className="bg-background"
       >
-        <Background className="bg-background" gap={20} size={1} />
-        <Controls className="bg-card border border-border rounded-lg" />
-        <MiniMap 
-          className="bg-card border border-border rounded-lg"
-          nodeColor={() => '#6366f1'}
-          maskColor="rgba(0, 0, 0, 0.6)"
-        />
+        <Background gap={20} size={1} />
+        <Controls />
+        <MiniMap />
       </ReactFlow>
     </div>
   )
 }
 
+// 2. This exports the component wrapped in the Provider
 export function FlowCanvas() {
   return (
     <ReactFlowProvider>
@@ -106,10 +90,3 @@ export function FlowCanvas() {
     </ReactFlowProvider>
   )
 }
-
-
-
-
-
-
-

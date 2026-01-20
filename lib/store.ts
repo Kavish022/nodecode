@@ -1,26 +1,18 @@
+
 import { create } from 'zustand';
 import { addEdge, applyNodeChanges, applyEdgeChanges } from '@xyflow/react';
 
-export const useStore = create((set, get) => ({
+export const useStore = create((set, get: any) => ({
   nodes: [],
   edges: [],
-  
-  onNodesChange: (changes) => {
-    set({ nodes: applyNodeChanges(changes, get().nodes) });
-  },
-  
-  onEdgesChange: (changes) => {
-    set({ edges: applyEdgeChanges(changes, get().edges) });
-  },
-
-  addNode: (newNode) => {
-    set({ nodes: [...get().nodes, newNode] });
-  },
-
-  // This updates the code inside a node when you type in the editor
-  updateNodeCode: (nodeId, fileIndex, newContent) => {
+  onNodesChange: (changes: any) => set({ nodes: applyNodeChanges(changes, get().nodes) }),
+  onEdgesChange: (changes: any) => set({ edges: applyEdgeChanges(changes, get().edges) }),
+  // FIX: This allows you to draw lines between nodes
+  onConnect: (connection: any) => set({ edges: addEdge(connection, get().edges) }),
+  addNode: (newNode: any) => set({ nodes: [...get().nodes, newNode] }),
+  updateNodeCode: (nodeId: string, fileIndex: number, newContent: string) => {
     set({
-      nodes: get().nodes.map((node) => {
+      nodes: get().nodes.map((node: any) => {
         if (node.id === nodeId) {
           const updatedFiles = [...node.data.files];
           updatedFiles[fileIndex].content = newContent;
