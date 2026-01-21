@@ -590,17 +590,24 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
 const CustomNode = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["memo"])(_c = _s(({ id, data, selected, style })=>{
     _s();
     const updateNodeCode = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$lib$2f$store$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useStore"])({
         "CustomNode.useStore[updateNodeCode]": (state)=>state.updateNodeCode
     }["CustomNode.useStore[updateNodeCode]"]);
-    return(// FIX: Apply style directly and remove extra wrapper classes that cause ghost space
+    const [isMounted, setIsMounted] = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].useState(false);
+    __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].useEffect({
+        "CustomNode.useEffect": ()=>{
+            setIsMounted(true); // This only runs once the component is in the browser
+        }
+    }["CustomNode.useEffect"], []);
+    return(// style: provides the exact width/height from React Flow state
     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         style: {
             ...style
         },
-        className: "relative",
+        className: "relative flex flex-col",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f40$xyflow$2f$react$2f$dist$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["NodeResizer"], {
                 color: "#3b82f6",
@@ -610,7 +617,7 @@ const CustomNode = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$proje
                 handleClassName: "h-2 w-2 bg-white border border-primary rounded-full"
             }, void 0, false, {
                 fileName: "[project]/Desktop/project/nodecode/components/custom-node.tsx",
-                lineNumber: 16,
+                lineNumber: 20,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -622,7 +629,7 @@ const CustomNode = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$proje
                         className: "w-3 h-3 !bg-primary z-10"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/project/nodecode/components/custom-node.tsx",
-                        lineNumber: 28,
+                        lineNumber: 30,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
@@ -632,12 +639,12 @@ const CustomNode = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$proje
                             children: data.label
                         }, void 0, false, {
                             fileName: "[project]/Desktop/project/nodecode/components/custom-node.tsx",
-                            lineNumber: 31,
+                            lineNumber: 33,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/Desktop/project/nodecode/components/custom-node.tsx",
-                        lineNumber: 30,
+                        lineNumber: 32,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -654,17 +661,17 @@ const CustomNode = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$proje
                                             children: file.name
                                         }, file.name, false, {
                                             fileName: "[project]/Desktop/project/nodecode/components/custom-node.tsx",
-                                            lineNumber: 38,
+                                            lineNumber: 42,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0)))
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/project/nodecode/components/custom-node.tsx",
-                                    lineNumber: 36,
+                                    lineNumber: 40,
                                     columnNumber: 13
                                 }, ("TURBOPACK compile-time value", void 0)),
-                                data.files?.map((file, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
+                                data.files?.map((file, index)=>/* FIX: Added h-full and flex-1 here so the editor has a parent with a defined height */ /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
                                         value: file.name,
-                                        className: "m-0 p-0 flex-1 h-full",
+                                        className: "m-0 p-0 flex-1 h-full min-h-0",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f40$monaco$2d$editor$2f$react$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"], {
                                             height: "100%",
                                             theme: "vs-dark",
@@ -677,27 +684,29 @@ const CustomNode = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$proje
                                                 },
                                                 fontSize: 12,
                                                 automaticLayout: true,
-                                                scrollBeyondLastLine: false
+                                                scrollBeyondLastLine: false,
+                                                // Ensures the editor doesn't try to grow past its container
+                                                overflowWidgetsDomNode: isMounted ? document.body : undefined
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/project/nodecode/components/custom-node.tsx",
-                                            lineNumber: 50,
+                                            lineNumber: 60,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, file.name, false, {
                                         fileName: "[project]/Desktop/project/nodecode/components/custom-node.tsx",
-                                        lineNumber: 49,
+                                        lineNumber: 54,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/project/nodecode/components/custom-node.tsx",
-                            lineNumber: 35,
+                            lineNumber: 39,
                             columnNumber: 11
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/Desktop/project/nodecode/components/custom-node.tsx",
-                        lineNumber: 34,
+                        lineNumber: 38,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$node_modules$2f40$xyflow$2f$react$2f$dist$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Handle"], {
@@ -706,26 +715,26 @@ const CustomNode = /*#__PURE__*/ _s((0, __TURBOPACK__imported__module__$5b$proje
                         className: "w-3 h-3 !bg-primary z-10"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/project/nodecode/components/custom-node.tsx",
-                        lineNumber: 68,
+                        lineNumber: 80,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/project/nodecode/components/custom-node.tsx",
-                lineNumber: 27,
+                lineNumber: 29,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/project/nodecode/components/custom-node.tsx",
-        lineNumber: 15,
+        lineNumber: 19,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0)));
-}, "OpROOvwud91nnpQRHnZAdpSSuvk=", false, function() {
+}, "NlDYDWXtpXlg8ctz/jSeTZXfrQA=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$lib$2f$store$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useStore"]
     ];
-})), "OpROOvwud91nnpQRHnZAdpSSuvk=", false, function() {
+})), "NlDYDWXtpXlg8ctz/jSeTZXfrQA=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$project$2f$nodecode$2f$lib$2f$store$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useStore"]
     ];

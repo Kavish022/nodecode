@@ -1052,10 +1052,6 @@
     min-height: calc(var(--spacing) * 16);
   }
 
-  .min-h-\[250px\] {
-    min-height: 250px;
-  }
-
   .min-h-svh {
     min-height: 100svh;
   }
@@ -1194,10 +1190,6 @@
 
   .min-w-\[12rem\] {
     min-width: 12rem;
-  }
-
-  .min-w-\[300px\] {
-    min-width: 300px;
   }
 
   .min-w-\[var\(--radix-select-trigger-width\)\] {
@@ -1808,10 +1800,6 @@
 
   .fill-primary {
     fill: var(--primary);
-  }
-
-  .stroke-\[3\] {
-    stroke-width: 3px;
   }
 
   .p-0 {
@@ -3763,15 +3751,6 @@
 
   :is(.\*\:data-\[slot\=select-value\]\:gap-2 > *)[data-slot="select-value"] {
     gap: calc(var(--spacing) * 2);
-  }
-
-  .data-\[state\=active\]\:border-b-2[data-state="active"] {
-    border-bottom-style: var(--tw-border-style);
-    border-bottom-width: 2px;
-  }
-
-  .data-\[state\=active\]\:border-primary[data-state="active"] {
-    border-color: var(--primary);
   }
 
   .data-\[state\=active\]\:bg-background[data-state="active"] {
