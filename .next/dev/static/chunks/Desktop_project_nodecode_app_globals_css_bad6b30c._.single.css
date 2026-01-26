@@ -731,6 +731,10 @@
     display: block;
   }
 
+  .contents {
+    display: contents;
+  }
+
   .flex {
     display: flex;
   }
@@ -966,6 +970,10 @@
 
   .min-h-16 {
     min-height: calc(var(--spacing) * 16);
+  }
+
+  .min-h-\[200px\] {
+    min-height: 200px;
   }
 
   .min-h-svh {
@@ -1250,10 +1258,6 @@
 
   .touch-none {
     touch-action: none;
-  }
-
-  .resize {
-    resize: both;
   }
 
   .resize-none {
